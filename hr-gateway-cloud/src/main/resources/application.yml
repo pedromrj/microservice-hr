@@ -1,0 +1,18 @@
+server:
+  port: 8765
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  application:
+    name: hr-gateway-zuul
+  cloud:
+    gateway:
+      routes:
+        - id: hr-worker
+          predicates:
+            - Path=/hr-worker/**
+        - id: hr-payroll
+          predicates:
+            - Path=/hr-payroll/**
